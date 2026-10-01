@@ -49,3 +49,4 @@ toggle_edit_mode={
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.011226866, 0.04506734, 0.016043302, 1)
