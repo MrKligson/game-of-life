@@ -60,7 +60,7 @@ animations = [{
 monitorable = false
 script = ExtResource("1_0ci7q")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2137692582]
+[node name="Shape" type="CollisionShape2D" parent="." unique_id=2137692582]
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_upksi")
 

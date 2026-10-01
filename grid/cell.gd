@@ -20,6 +20,7 @@ var _mouse: FrameOffset = FrameOffset.Default:
 var _neighbours: Array[Vector2i]
 
 @onready var sprite: AnimatedSprite2D = $Sprite
+@onready var collision_shape: CollisionShape2D = $Shape
 
 
 func _ready() -> void:
@@ -28,9 +29,16 @@ func _ready() -> void:
 	_on_edit_mode_changed(State.edit_mode)
 
 
-func initialise(p_location: Vector2i, grid: Vector2i, randomise: bool) -> void:
+func initialise(p_location: Vector2i, grid: Vector2i, random: bool) -> void:
+	var size: int = collision_shape.shape.get_rect().size.x as int
 	location = p_location
-	is_alive = _random() if randomise else false
+	position = location * size
+
+	if random:
+		is_alive = _random()
+	else:
+		is_alive = false
+
 	for neighbour: Vector2i in [
 			Vector2i(-1,-1), Vector2i(0, -1), Vector2i(1, -1),
 			Vector2i(-1, 0), Vector2i(1, 0),
