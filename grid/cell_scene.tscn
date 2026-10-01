@@ -56,7 +56,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="CellScene" type="Area2D" unique_id=2074912715]
+[node name="CellScene" type="Area2D" unique_id=2074912715 groups=["cells"]]
 monitorable = false
 script = ExtResource("1_0ci7q")
 
