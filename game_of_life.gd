@@ -15,6 +15,7 @@ func _ready() -> void:
 	DisplayServer.window_set_min_size(Vector2i(1920, 1080))
 	write_buffer.create(GridLayout)
 	grid.initialise(GridLayout, write_buffer, RandomiseGrid)
+	grid.update_from_buffer()
 	if not RandomiseGrid:
 		State.toggle_edit_mode()
 	else:
