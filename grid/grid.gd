@@ -17,3 +17,7 @@ func initialise(layout: Vector2i, buffer: BitMap, randomise: bool = true) -> voi
 			cell.initialise(Vector2i(x, y), layout, randomise)
 			cell.is_alive_changed.connect(_on_cell_is_alive_changed)
 			_write_buffer.set_bitv(cell.location, cell.is_alive)
+
+
+func _on_cell_is_alive_changed(cell: Cell) -> void:
+	_write_buffer.set_bitv(cell.location, cell.is_alive)
