@@ -20,7 +20,6 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
-anti_aliasing = false
 
 [node name="GameOfLife" type="Node" unique_id=249392094]
 script = ExtResource("1_2q17r")
@@ -30,8 +29,9 @@ position = Vector2(4, 4)
 script = ExtResource("2_i6ly2")
 
 [node name="Panel" type="Panel" parent="Grid" unique_id=2031904757]
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 36.0
-offset_bottom = 36.0
+process_mode = 4
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 37.0
+offset_bottom = 37.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_i6ly2")

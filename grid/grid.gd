@@ -19,7 +19,7 @@ func initialise(layout: Vector2i, buffer: BitMap, randomise: bool = true) -> voi
 			cell.initialise(Vector2i(x, y), layout, randomise)
 			cell.is_alive_changed.connect(_on_cell_is_alive_changed)
 			_write_buffer.set_bitv(cell.location, cell.is_alive)
-	panel.size = layout * (get_child(1) as Cell).size + Vector2i(8, 8)
+	panel.size = layout * (get_child(1) as Cell).size + Vector2i(6, 6)
 
 
 func _on_cell_is_alive_changed(cell: Cell) -> void:
