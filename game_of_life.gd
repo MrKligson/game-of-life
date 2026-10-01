@@ -44,7 +44,6 @@ func _input(event: InputEvent) -> void:
 		get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
 		get_tree().quit()
 	elif event.is_action_pressed("toggle_fullscreen"):
-		print(DisplayServer.window_get_mode())
 		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		else:
