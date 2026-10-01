@@ -23,6 +23,8 @@ corner_radius_bottom_left = 5
 [node name="GameOfLife" type="Node" unique_id=249392094]
 script = ExtResource("1_2q17r")
 
+[node name="UpdateTimer" type="Timer" parent="." unique_id=1136069371]
+
 [node name="Grid" type="Node2D" parent="." unique_id=1055059090]
 position = Vector2(4, 4)
 script = ExtResource("2_i6ly2")
@@ -34,3 +36,5 @@ offset_top = -3.0
 offset_right = 37.0
 offset_bottom = 37.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_i6ly2")
+
+[connection signal="timeout" from="UpdateTimer" to="." method="game_of_life"]
