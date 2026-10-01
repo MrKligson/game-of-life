@@ -12,6 +12,9 @@ var is_alive: bool = true:
 		_update_sprite()
 var location: Vector2i
 var live_neighbour_count: int = 0
+var size: Vector2i:
+	get:
+		return collision_shape.shape.get_rect().size
 
 var _mouse: FrameOffset = FrameOffset.Default:
 	set(value):
@@ -30,9 +33,8 @@ func _ready() -> void:
 
 
 func initialise(p_location: Vector2i, grid: Vector2i, random: bool) -> void:
-	var size: int = collision_shape.shape.get_rect().size.x as int
 	location = p_location
-	position = location * size
+	position = location * size.x
 
 	if random:
 		is_alive = _random()
