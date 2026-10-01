@@ -6,9 +6,18 @@ signal is_alive_changed(cell: Cell)
 const FrameIndex = {false: 0, true: 3}
 enum FrameOffset {Default, Hovered}
 
-var is_alive: bool = true
+var is_alive: bool = true:
+	set(value):
+		is_alive = value
+		_update_sprite()
+var location: Vector2i
+var live_neighbour_count: int = 0
 
-var _mouse: FrameOffset = FrameOffset.Default
+var _mouse: FrameOffset = FrameOffset.Default:
+	set(value):
+		_mouse = value
+		_update_sprite()
+var _neighbours: Array[Vector2i]
 
 @onready var sprite: AnimatedSprite2D = $Sprite
 
@@ -33,12 +42,10 @@ func _on_edit_mode_changed(edit_mode: bool) -> void:
 
 func _on_mouse_entered() -> void:
 	_mouse = FrameOffset.Hovered
-	_update_sprite()
 
 
 func _on_mouse_exited() -> void:
 	_mouse = FrameOffset.Default
-	_update_sprite()
 
 
 func _on_input_event(_viewport: Node, _event: InputEvent, _shape_idx: int) -> void:
@@ -47,5 +54,4 @@ func _on_input_event(_viewport: Node, _event: InputEvent, _shape_idx: int) -> vo
 	elif Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		is_alive = false
 	else: return
-	_update_sprite()
 	is_alive_changed.emit(self)
