@@ -49,7 +49,7 @@ func initialise(p_location: Vector2i, grid: Vector2i, random: bool) -> void:
 		_neighbours.append((location + neighbour + grid) % grid)
 
 
-func update(args: Array[BitMap]) -> void:
+func update(args: Array) -> void:
 	var cells: BitMap = args[0]
 	is_alive = cells.get_bitv(location)
 	live_neighbour_count = 0
