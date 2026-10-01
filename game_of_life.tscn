@@ -1,3 +1,6 @@
 [gd_scene format=3 uid="uid://d0j8lkdlnwyhh"]
 
+[ext_resource type="Script" uid="uid://cdeftktj6rf40" path="res://game_of_life.gd" id="1_2q17r"]
+
 [node name="GameOfLife" type="Node" unique_id=249392094]
+script = ExtResource("1_2q17r")
