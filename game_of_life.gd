@@ -4,7 +4,7 @@ const GridLayout := Vector2i(95, 67)
 const RandomiseGrid = true
 const UpdateTick = 0.085
 
-var write_buffer := BitMap.new()
+var write_buffer: BitMap
 
 @onready var grid: Grid = $Grid
 @onready var update_timer: Timer = $UpdateTimer
@@ -13,9 +13,7 @@ var write_buffer := BitMap.new()
 func _ready() -> void:
 	State.edit_mode_changed.connect(_on_edit_mode_changed)
 	DisplayServer.window_set_min_size(Vector2i(1920, 1080))
-	write_buffer.create(GridLayout)
-	grid.initialise(GridLayout, write_buffer, RandomiseGrid)
-	grid.update_from_buffer()
+	write_buffer = grid.initialise(GridLayout, RandomiseGrid)
 	if not RandomiseGrid:
 		State.toggle_edit_mode()
 	else:
@@ -37,19 +35,29 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_edit_mode"):
 		State.toggle_edit_mode()
 	elif event.is_action_pressed("clear"):
-		pass
+		grid.clear()
+		State.toggle_edit_mode()
 	elif event.is_action_pressed("randomise"):
-		pass
+		grid.randomise()
 	elif event.is_action_pressed("quit"):
+		quit()
+	elif event.is_action_pressed("toggle_fullscreen"):
+		toggle_fullscreen()
+	else: return
+
+	get_viewport().set_input_as_handled()
+
+
+func quit() -> void:
 		get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
 		get_tree().quit()
-	elif event.is_action_pressed("toggle_fullscreen"):
+
+
+func toggle_fullscreen() -> void:
 		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	else: return
-	get_viewport().set_input_as_handled()
 
 
 func _on_edit_mode_changed(edit_mode: bool) -> void:

@@ -37,7 +37,7 @@ func initialise(p_location: Vector2i, grid: Vector2i, random: bool) -> void:
 	position = location * size.x
 
 	if random:
-		is_alive = _random()
+		randomise()
 	else:
 		is_alive = false
 
@@ -52,6 +52,7 @@ func initialise(p_location: Vector2i, grid: Vector2i, random: bool) -> void:
 func update(args: Array) -> void:
 	var cells: BitMap = args[0]
 	is_alive = cells.get_bitv(location)
+
 	live_neighbour_count = 0
 	for neighbour: Vector2i in _neighbours:
 		live_neighbour_count += 1 if cells.get_bitv(neighbour) else 0
@@ -63,8 +64,8 @@ func _update_sprite() -> void:
 		sprite.frame += _mouse
 
 
-func _random() -> bool:
-	return randf() < 0.5
+func randomise() -> void:
+	is_alive = randf() < 0.5
 
 
 func _on_edit_mode_changed(edit_mode: bool) -> void:

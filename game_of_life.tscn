@@ -29,7 +29,7 @@ script = ExtResource("1_2q17r")
 position = Vector2(4, 4)
 script = ExtResource("2_i6ly2")
 
-[node name="Panel" type="Panel" parent="Grid" unique_id=2031904757]
+[node name="Background" type="Panel" parent="Grid" unique_id=2031904757]
 process_mode = 4
 offset_left = -3.0
 offset_top = -3.0
