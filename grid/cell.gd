@@ -28,10 +28,35 @@ func _ready() -> void:
 	_on_edit_mode_changed(State.edit_mode)
 
 
+func initialise(p_location: Vector2i, grid: Vector2i, randomise: bool) -> void:
+	location = p_location
+	is_alive = _random() if randomise else false
+	for neighbour: Vector2i in [
+			Vector2i(-1,-1), Vector2i(0, -1), Vector2i(1, -1),
+			Vector2i(-1, 0), Vector2i(1, 0),
+			Vector2i(-1, 1), Vector2i(0,1), Vector2i(1,1),
+	]:
+		_neighbours.append((location + neighbour + grid) % grid)
+
+
+func update(args: Array[BitMap]) -> void:
+	var cells: BitMap = args[0]
+	is_alive = cells.get_bitv(location)
+	live_neighbour_count = 0
+	for neighbour: Vector2i in _neighbours:
+		live_neighbour_count += 1 if cells.get_bitv(neighbour) else 0
+
+
 func _update_sprite() -> void:
 	sprite.frame = FrameIndex[is_alive]
 	if State.edit_mode:
 		sprite.frame += _mouse
+
+
+func _random() -> bool:
+	return randf() < 0.5
+
+
 func _on_edit_mode_changed(edit_mode: bool) -> void:
 	if edit_mode and not input_event.is_connected(_on_input_event):
 		input_event.connect(_on_input_event)
