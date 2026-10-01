@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://b6sgdycytyy1a"]
+
+[ext_resource type="Script" uid="uid://s2an1veullbi" path="res://grid/cell.gd" id="1_0ci7q"]
+[ext_resource type="Texture2D" uid="uid://c5un6iq8hf6y1" path="res://grid/cell_states.png" id="1_c40a6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_upksi"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyjok"]
+atlas = ExtResource("1_c40a6")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5c1v"]
+atlas = ExtResource("1_c40a6")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mp52w"]
+atlas = ExtResource("1_c40a6")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xiv8e"]
+atlas = ExtResource("1_c40a6")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhvoo"]
+atlas = ExtResource("1_c40a6")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyn3s"]
+atlas = ExtResource("1_c40a6")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_008d5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyjok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5c1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mp52w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xiv8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhvoo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyn3s")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CellScene" type="Area2D" unique_id=2074912715]
+monitorable = false
+script = ExtResource("1_0ci7q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2137692582]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_upksi")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1738130306]
+position = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_008d5")
+frame = 3
+speed_scale = 0.0
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
