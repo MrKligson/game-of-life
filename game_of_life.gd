@@ -11,6 +11,7 @@ var write_buffer := BitMap.new()
 
 
 func _ready() -> void:
+	State.edit_mode_changed.connect(_on_edit_mode_changed)
 	write_buffer.create(GridLayout)
 	grid.initialise(GridLayout, write_buffer, RandomiseGrid)
 	if not RandomiseGrid:
@@ -33,3 +34,11 @@ func game_of_life() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_edit_mode"):
 		State.toggle_edit_mode()
+
+
+func _on_edit_mode_changed(edit_mode: bool) -> void:
+	if edit_mode:
+		update_timer.stop()
+	else:
+		grid.update_from_buffer()
+		update_timer.start(UpdateTick)
