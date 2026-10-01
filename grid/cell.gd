@@ -13,8 +13,22 @@ var _mouse: FrameOffset = FrameOffset.Default
 @onready var sprite: AnimatedSprite2D = $Sprite
 
 
+func _ready() -> void:
+	State.edit_mode_changed.connect(_on_edit_mode_changed)
+	# call it once to make sure our connections are good for the default:
+	_on_edit_mode_changed(State.edit_mode)
+
+
 func _update_sprite() -> void:
-	sprite.frame = FrameIndex[is_alive] + _mouse
+	sprite.frame = FrameIndex[is_alive]
+	if State.edit_mode:
+		sprite.frame += _mouse
+func _on_edit_mode_changed(edit_mode: bool) -> void:
+	if edit_mode and not input_event.is_connected(_on_input_event):
+		input_event.connect(_on_input_event)
+	elif not edit_mode and input_event.is_connected(_on_input_event):
+		input_event.disconnect(_on_input_event)
+	_update_sprite()
 
 
 func _on_mouse_entered() -> void:
@@ -27,7 +41,7 @@ func _on_mouse_exited() -> void:
 	_update_sprite()
 
 
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_input_event(_viewport: Node, _event: InputEvent, _shape_idx: int) -> void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		is_alive = true
 	elif Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
