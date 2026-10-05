@@ -2,23 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cdeftktj6rf40" path="res://game_of_life.gd" id="1_2q17r"]
 [ext_resource type="Script" uid="uid://dvqeocahwbhd3" path="res://grid/grid.gd" id="2_i6ly2"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6ly2"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
-bg_color = Color(0.013487131, 0.055826746, 0.021582749, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.07058824, 0.16862746, 0.09411765, 0.4)
-border_blend = true
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+[ext_resource type="PackedScene" uid="uid://rqgaa6q8ldhh" path="res://ui/side_menu.tscn" id="3_bc2ma"]
+[ext_resource type="StyleBox" uid="uid://44pcxk003itw" path="res://ui/background.tres" id="3_v7rsy"]
 
 [node name="GameOfLife" type="Node" unique_id=249392094]
 script = ExtResource("1_2q17r")
@@ -35,6 +20,8 @@ offset_left = -3.0
 offset_top = -3.0
 offset_right = 37.0
 offset_bottom = 37.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_i6ly2")
+theme_override_styles/panel = ExtResource("3_v7rsy")
+
+[node name="SideMenu" parent="." unique_id=714676957 instance=ExtResource("3_bc2ma")]
 
 [connection signal="timeout" from="UpdateTimer" to="." method="game_of_life"]

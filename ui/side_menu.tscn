@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://rqgaa6q8ldhh"]
+
+[ext_resource type="FontFile" uid="uid://dvl5u7wla8hww" path="res://ui/font/InterDisplay-Medium.ttf" id="1_nb4k0"]
+[ext_resource type="StyleBox" uid="uid://cp38lwehbyv2m" path="res://ui/button_states/disabled.tres" id="2_fhspm"]
+[ext_resource type="FontFile" uid="uid://d5sd2fkkp7rx" path="res://ui/font/Matrix Complex NC.ttf" id="2_u7hwa"]
+[ext_resource type="StyleBox" uid="uid://44pcxk003itw" path="res://ui/background.tres" id="3_8t5rf"]
+[ext_resource type="StyleBox" uid="uid://btd617pdtu783" path="res://ui/button_states/hoverd.tres" id="3_w0t27"]
+[ext_resource type="StyleBox" uid="uid://64atcowy1r5l" path="res://ui/button_states/normal.tres" id="4_vw87c"]
+[ext_resource type="StyleBox" uid="uid://cm6w0oi7gdx8n" path="res://ui/button_states/pressed.tres" id="5_wd0ol"]
+
+[sub_resource type="Theme" id="Theme_ofb81"]
+default_font = ExtResource("1_nb4k0")
+default_font_size = 34
+Button/colors/font_color = Color(0.14509805, 0.47843137, 0.14509805, 1)
+Button/colors/font_disabled_color = Color(0.14400001, 0.48, 0.14400001, 0.18431373)
+Button/colors/font_hover_color = Color(0.36078432, 0.8, 0.36078432, 1)
+Button/colors/font_hover_pressed_color = Color(0.36078432, 0.8, 0.36078432, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0.36078432, 0.8, 0.36078432, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 30
+Button/fonts/font = ExtResource("2_u7hwa")
+Button/styles/disabled = ExtResource("2_fhspm")
+Button/styles/hover = ExtResource("3_w0t27")
+Button/styles/normal = ExtResource("4_vw87c")
+Button/styles/pressed = ExtResource("5_wd0ol")
+Label/colors/font_color = Color(0.14509805, 0.47843137, 0.14509805, 1)
+Label/colors/font_outline_color = Color(0.36078432, 0.8, 0.36078432, 1)
+Label/colors/font_shadow_color = Color(0.011764706, 0.043137256, 0.015686275, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_upksi"]
+font = ExtResource("2_u7hwa")
+font_size = 44
+font_color = Color(0.36078432, 0.8, 0.36078432, 0.7294118)
+outline_color = Color(0.14509805, 0.47843137, 0.14509805, 1)
+shadow_size = 5
+shadow_color = Color(0.011764706, 0.043137256, 0.015686275, 1)
+shadow_offset = Vector2(2, 2)
+
+[node name="SideMenu" type="PanelContainer" unique_id=714676957]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -380.0
+offset_top = 1.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_ofb81")
+theme_override_styles/panel = ExtResource("3_8t5rf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2077530570]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=962591079]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 77
+theme_override_constants/margin_bottom = 50
+
+[node name="GameTitle" type="Label" parent="VBoxContainer/MarginContainer" unique_id=704818806]
+layout_mode = 2
+size_flags_vertical = 0
+text = "GAME OF LIFE"
+label_settings = SubResource("LabelSettings_upksi")
+horizontal_alignment = 1
+
+[node name="RunEditButton" type="Button" parent="VBoxContainer" unique_id=1190424382]
+layout_mode = 2
+size_flags_vertical = 0
+text = "RUN"
+
+[node name="ClearButton" type="Button" parent="VBoxContainer" unique_id=513884661]
+layout_mode = 2
+size_flags_vertical = 0
+text = "CLEAR"
+
+[node name="RadomiseButton" type="Button" parent="VBoxContainer" unique_id=553060555]
+layout_mode = 2
+size_flags_vertical = 0
+text = "RANDOMISE"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer" unique_id=1736081114]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/margin_bottom = 70
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/MarginContainer2" unique_id=1440901791]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="FullscreenButton" type="Button" parent="VBoxContainer/MarginContainer2/VBoxContainer2" unique_id=2086070930]
+layout_mode = 2
+text = "FULLSCREEN"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer/MarginContainer2/VBoxContainer2" unique_id=152541140]
+layout_mode = 2
+size_flags_vertical = 8
+text = "QUIT"
