@@ -9,6 +9,7 @@
 [ext_resource type="StyleBox" uid="uid://cm6w0oi7gdx8n" path="res://ui/button_states/button_pressed.tres" id="5_wd0ol"]
 [ext_resource type="StyleBox" uid="uid://dr50ho5f6am80" path="res://ui/label_margins.tres" id="6_wd0ol"]
 [ext_resource type="Script" uid="uid://bwi8dlprkw73p" path="res://ui/side_menu.gd" id="9_wd0ol"]
+[ext_resource type="Script" uid="uid://c64vdkvtl5i83" path="res://ui/run_edit_button.gd" id="10_s4oco"]
 
 [sub_resource type="Theme" id="Theme_ofb81"]
 default_font = ExtResource("1_nb4k0")
@@ -84,6 +85,7 @@ focus_mode = 0
 shortcut = SubResource("Shortcut_fhspm")
 shortcut_in_tooltip = false
 text = "RUN"
+script = ExtResource("10_s4oco")
 
 [node name="ClearButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=513884661]
 unique_name_in_owner = true
