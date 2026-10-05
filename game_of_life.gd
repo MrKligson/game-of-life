@@ -35,7 +35,8 @@ func _input(event: InputEvent) -> void:
 		State.toggle_edit_mode()
 	elif event.is_action_pressed("clear"):
 		grid.clear()
-		State.toggle_edit_mode()
+		if not State.edit_mode:
+			State.toggle_edit_mode()
 	elif event.is_action_pressed("randomise"):
 		grid.randomise()
 	elif event.is_action_pressed("quit"):
