@@ -54,51 +54,47 @@ size_flags_horizontal = 3
 theme = SubResource("Theme_ofb81")
 theme_override_styles/panel = ExtResource("3_8t5rf")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2077530570]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=962591079]
 layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=962591079]
-layout_mode = 2
-theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 77
 theme_override_constants/margin_bottom = 50
 
-[node name="GameTitle" type="Label" parent="VBoxContainer/MarginContainer" unique_id=704818806]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2077530570]
+layout_mode = 2
+
+[node name="GameTitle" type="Label" parent="MarginContainer/VBoxContainer" unique_id=704818806]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_vertical = 0
 text = "GAME OF LIFE"
 label_settings = SubResource("LabelSettings_upksi")
 horizontal_alignment = 1
 
-[node name="RunEditButton" type="Button" parent="VBoxContainer" unique_id=1190424382]
+[node name="RunEditButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1190424382]
 layout_mode = 2
 size_flags_vertical = 0
+tooltip_text = "Switches to edit mode. [spacebar] or [e]"
 text = "RUN"
 
-[node name="ClearButton" type="Button" parent="VBoxContainer" unique_id=513884661]
+[node name="ClearButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=513884661]
 layout_mode = 2
 size_flags_vertical = 0
 text = "CLEAR"
 
-[node name="RadomiseButton" type="Button" parent="VBoxContainer" unique_id=553060555]
+[node name="RadomiseButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=553060555]
 layout_mode = 2
 size_flags_vertical = 0
 text = "RANDOMISE"
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer" unique_id=1736081114]
+[node name="Statistics" type="GridContainer" parent="MarginContainer/VBoxContainer" unique_id=1766104412]
 layout_mode = 2
-size_flags_vertical = 10
-theme_override_constants/margin_bottom = 70
+size_flags_vertical = 3
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/MarginContainer2" unique_id=1440901791]
-layout_mode = 2
-size_flags_vertical = 8
-
-[node name="FullscreenButton" type="Button" parent="VBoxContainer/MarginContainer2/VBoxContainer2" unique_id=2086070930]
+[node name="FullscreenButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=2086070930]
 layout_mode = 2
 text = "FULLSCREEN"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer/MarginContainer2/VBoxContainer2" unique_id=152541140]
+[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=152541140]
 layout_mode = 2
 size_flags_vertical = 8
 text = "QUIT"

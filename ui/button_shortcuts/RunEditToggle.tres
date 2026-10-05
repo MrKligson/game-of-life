@@ -1,0 +1,7 @@
+[gd_resource type="Shortcut" format=3 uid="uid://c0j0boa2yiumk"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_vw87c"]
+action = &"toggle_edit_mode"
+
+[resource]
+events = [SubResource("InputEventAction_vw87c")]
