@@ -30,36 +30,6 @@ func game_of_life() -> void:
 	grid.update_from_buffer()
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("toggle_edit_mode"):
-		State.toggle_edit_mode()
-	elif event.is_action_pressed("clear"):
-		grid.clear()
-		if not State.edit_mode:
-			State.toggle_edit_mode()
-	elif event.is_action_pressed("randomise"):
-		grid.randomise()
-	elif event.is_action_pressed("quit"):
-		quit()
-	elif event.is_action_pressed("toggle_fullscreen"):
-		toggle_fullscreen()
-	else: return
-
-	get_viewport().set_input_as_handled()
-
-
-func quit() -> void:
-		get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
-		get_tree().quit()
-
-
-func toggle_fullscreen() -> void:
-		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		else:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-
-
 func _on_edit_mode_changed(edit_mode: bool) -> void:
 	if edit_mode:
 		update_timer.stop()

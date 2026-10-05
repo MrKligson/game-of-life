@@ -2,6 +2,10 @@
 
 [sub_resource type="InputEventAction" id="InputEventAction_vw87c"]
 action = &"toggle_edit_mode"
+event_index = 0
+
+[sub_resource type="InputEventAction" id="InputEventAction_wd0ol"]
+event_index = 1
 
 [resource]
-events = [SubResource("InputEventAction_vw87c")]
+events = [SubResource("InputEventAction_vw87c"), SubResource("InputEventAction_wd0ol")]

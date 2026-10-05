@@ -6,7 +6,10 @@
 [ext_resource type="StyleBox" uid="uid://44pcxk003itw" path="res://ui/background.tres" id="3_8t5rf"]
 [ext_resource type="StyleBox" uid="uid://btd617pdtu783" path="res://ui/button_states/hoverd.tres" id="3_w0t27"]
 [ext_resource type="StyleBox" uid="uid://64atcowy1r5l" path="res://ui/button_states/normal.tres" id="4_vw87c"]
+[ext_resource type="StyleBox" uid="uid://ctyu8csp12n8a" path="res://ui/tooltips/tooltip_panel.tres" id="4_w0t27"]
 [ext_resource type="StyleBox" uid="uid://cm6w0oi7gdx8n" path="res://ui/button_states/pressed.tres" id="5_wd0ol"]
+[ext_resource type="Shortcut" uid="uid://c0j0boa2yiumk" path="res://ui/button_shortcuts/RunEditToggle.tres" id="8_w0t27"]
+[ext_resource type="Script" uid="uid://bwi8dlprkw73p" path="res://ui/side_menu.gd" id="9_wd0ol"]
 
 [sub_resource type="Theme" id="Theme_ofb81"]
 default_font = ExtResource("1_nb4k0")
@@ -30,6 +33,8 @@ Button/styles/pressed = ExtResource("5_wd0ol")
 Label/colors/font_color = Color(0.14509805, 0.47843137, 0.14509805, 1)
 Label/colors/font_outline_color = Color(0.36078432, 0.8, 0.36078432, 1)
 Label/colors/font_shadow_color = Color(0.011764706, 0.043137256, 0.015686275, 1)
+TooltipLabel/colors/font_color = Color(0.34901962, 0.77254903, 0.34901962, 1)
+TooltipPanel/styles/panel = ExtResource("4_w0t27")
 
 [sub_resource type="LabelSettings" id="LabelSettings_upksi"]
 font = ExtResource("2_u7hwa")
@@ -53,6 +58,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 theme = SubResource("Theme_ofb81")
 theme_override_styles/panel = ExtResource("3_8t5rf")
+script = ExtResource("9_wd0ol")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=962591079]
 layout_mode = 2
@@ -71,19 +77,27 @@ label_settings = SubResource("LabelSettings_upksi")
 horizontal_alignment = 1
 
 [node name="RunEditButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1190424382]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
 tooltip_text = "Switches to edit mode. [spacebar] or [e]"
+focus_mode = 0
+shortcut = ExtResource("8_w0t27")
+shortcut_in_tooltip = false
 text = "RUN"
 
 [node name="ClearButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=513884661]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
+focus_mode = 0
 text = "CLEAR"
 
-[node name="RadomiseButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=553060555]
+[node name="RandomiseButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=553060555]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
+focus_mode = 0
 text = "RANDOMISE"
 
 [node name="Statistics" type="GridContainer" parent="MarginContainer/VBoxContainer" unique_id=1766104412]
@@ -91,10 +105,14 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="FullscreenButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=2086070930]
+unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 text = "FULLSCREEN"
 
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=152541140]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
+focus_mode = 0
 text = "QUIT"
