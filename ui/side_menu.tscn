@@ -10,7 +10,7 @@
 
 [sub_resource type="Theme" id="Theme_ofb81"]
 default_font = ExtResource("1_nb4k0")
-default_font_size = 34
+default_font_size = 16
 Button/colors/font_color = Color(0.14509805, 0.47843137, 0.14509805, 1)
 Button/colors/font_disabled_color = Color(0.14400001, 0.48, 0.14400001, 0.18431373)
 Button/colors/font_hover_color = Color(0.36078432, 0.8, 0.36078432, 1)
