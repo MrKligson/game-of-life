@@ -5,18 +5,19 @@ const RandomiseGrid = true
 const UpdateTick = 0.085
 
 var write_buffer: BitMap
-var statistics: Statistics = Statistics.new()
+var statistics: Statistics
 
 @onready var background: Panel = $Background
 @onready var grid: Grid = $Grid
 @onready var update_timer: Timer = $UpdateTimer
+@onready var side_menu: SideMenu = $SideMenu
 
 
 func _ready() -> void:
 	State.edit_mode_changed.connect(_on_edit_mode_changed)
-	write_buffer = grid.initialise(GridLayout, RandomiseGrid)
+	statistics = side_menu.initialise_statistics(GridLayout)
+	write_buffer = grid.initialise(GridLayout, statistics, RandomiseGrid)
 	background.size = grid.size + Vector2i(6, 6)
-	statistics.reset()
 	if not RandomiseGrid:
 		State.toggle_edit_mode()
 	else:
@@ -37,6 +38,8 @@ func game_of_life() -> void:
 			if cell.is_alive:
 				statistics.died += 1
 	grid.update_from_buffer()
+	statistics.update()
+
 
 
 func _on_edit_mode_changed(edit_mode: bool) -> void:
