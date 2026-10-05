@@ -31,6 +31,8 @@ func initialise(layout: Vector2i, random: bool = true) -> BitMap:
 func clear() -> void:
 	_write_buffer.create(_layout)
 	update_from_buffer()
+	if not State.edit_mode:
+		State.toggle_edit_mode()
 
 
 func randomise() -> void:
