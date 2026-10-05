@@ -10,6 +10,7 @@
 [ext_resource type="StyleBox" uid="uid://dr50ho5f6am80" path="res://ui/label_margins.tres" id="6_wd0ol"]
 [ext_resource type="Script" uid="uid://bwi8dlprkw73p" path="res://ui/side_menu.gd" id="9_wd0ol"]
 [ext_resource type="Script" uid="uid://c64vdkvtl5i83" path="res://ui/run_edit_button.gd" id="10_s4oco"]
+[ext_resource type="Script" uid="uid://dh5m8gfyl8wbb" path="res://ui/grid_container.gd" id="11_s4oco"]
 
 [sub_resource type="Theme" id="Theme_ofb81"]
 default_font = ExtResource("1_nb4k0")
@@ -44,6 +45,52 @@ outline_color = Color(0.14509805, 0.47843137, 0.14509805, 1)
 shadow_size = 5
 shadow_color = Color(0.011764706, 0.043137256, 0.015686275, 1)
 shadow_offset = Vector2(2, 2)
+
+[sub_resource type="InputEventAction" id="InputEventAction_vw87c"]
+action = &"toggle_edit_mode"
+pressed = true
+event_index = 0
+
+[sub_resource type="InputEventAction" id="InputEventAction_wd0ol"]
+pressed = true
+event_index = 1
+
+[sub_resource type="Shortcut" id="Shortcut_fhspm"]
+events = [SubResource("InputEventAction_vw87c"), SubResource("InputEventAction_wd0ol")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_0yje3"]
+action = &"clear"
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_l5myt"]
+events = [SubResource("InputEventAction_0yje3")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_2tdvt"]
+action = &"randomise"
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_2jjxr"]
+events = [SubResource("InputEventAction_2tdvt")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_0y782"]
+action = &"toggle_fullscreen"
+pressed = true
+event_index = 0
+
+[sub_resource type="InputEventAction" id="InputEventAction_4fnck"]
+action = &"toggle_fullscreen"
+pressed = true
+event_index = 1
+
+[sub_resource type="Shortcut" id="Shortcut_2tdvt"]
+events = [SubResource("InputEventAction_0y782"), SubResource("InputEventAction_4fnck")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_2jjxr"]
+action = &"quit"
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_0yje3"]
+events = [SubResource("InputEventAction_2jjxr")]
 
 [node name="SideMenu" type="PanelContainer" unique_id=714676957]
 anchors_preset = 11
@@ -80,12 +127,39 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
-tooltip_text = "Switches to edit mode. [spacebar] or [e]"
 focus_mode = 0
 shortcut = SubResource("Shortcut_fhspm")
 shortcut_in_tooltip = false
 text = "RUN"
 script = ExtResource("10_s4oco")
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer" unique_id=643202066]
+visible = false
+layout_mode = 2
+columns = 2
+script = ExtResource("11_s4oco")
+
+[node name="LMBLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1189396308]
+layout_mode = 2
+theme_type_variation = &"LabelCurrentMode"
+text = "Left mouse button: "
+
+[node name="LMBExplanation" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=268316610]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"LabelCurrentMode"
+text = "Draw life cells"
+
+[node name="RMBLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=2140774444]
+layout_mode = 2
+theme_type_variation = &"LabelCurrentMode"
+text = "Right mouse button: "
+
+[node name="RMBexplanation" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1183139474]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"LabelCurrentMode"
+text = "Draw dead cells"
 
 [node name="ClearButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=513884661]
 unique_name_in_owner = true
