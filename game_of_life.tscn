@@ -10,18 +10,18 @@ script = ExtResource("1_2q17r")
 
 [node name="UpdateTimer" type="Timer" parent="." unique_id=1136069371]
 
+[node name="Background" type="Panel" parent="." unique_id=2031904757]
+process_mode = 4
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 41.0
+offset_bottom = 41.0
+theme_override_styles/panel = ExtResource("3_v7rsy")
+
 [node name="Grid" type="Node2D" parent="." unique_id=1055059090]
 unique_name_in_owner = true
 position = Vector2(4, 4)
 script = ExtResource("2_i6ly2")
-
-[node name="Background" type="Panel" parent="Grid" unique_id=2031904757]
-process_mode = 4
-offset_left = -3.0
-offset_top = -3.0
-offset_right = 37.0
-offset_bottom = 37.0
-theme_override_styles/panel = ExtResource("3_v7rsy")
 
 [node name="SideMenu" parent="." unique_id=714676957 instance=ExtResource("3_bc2ma")]
 

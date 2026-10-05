@@ -6,6 +6,7 @@ const UpdateTick = 0.085
 
 var write_buffer: BitMap
 
+@onready var background: Panel = $Background
 @onready var grid: Grid = $Grid
 @onready var update_timer: Timer = $UpdateTimer
 
@@ -13,6 +14,7 @@ var write_buffer: BitMap
 func _ready() -> void:
 	State.edit_mode_changed.connect(_on_edit_mode_changed)
 	write_buffer = grid.initialise(GridLayout, RandomiseGrid)
+	background.size = grid.size + Vector2i(6, 6)
 	if not RandomiseGrid:
 		State.toggle_edit_mode()
 	else:
@@ -20,7 +22,7 @@ func _ready() -> void:
 
 
 func game_of_life() -> void:
-	for cell: Cell in grid.get_children().slice(1):
+	for cell: Cell in grid.get_children():
 		if cell.is_alive and cell.live_neighbour_count in [2, 3]:
 			write_buffer.set_bitv(cell.location, true)
 		elif not cell.is_alive and cell.live_neighbour_count == 3:
