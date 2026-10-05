@@ -5,12 +5,10 @@ const CellScene = preload("uid://b6sgdycytyy1a")
 
 var size: Vector2i:
 	get:
-		return _layout * (get_child(1) as Cell).size
+		return _layout * (get_child(0) as Cell).size
 
 var _write_buffer := BitMap.new()
 var _layout: Vector2i
-
-@onready var background: Panel = $Background
 
 
 func initialise(layout: Vector2i, random: bool = true) -> BitMap:
@@ -24,7 +22,6 @@ func initialise(layout: Vector2i, random: bool = true) -> BitMap:
 			cell.is_alive_changed.connect(_on_cell_is_alive_changed)
 			_write_buffer.set_bitv(cell.location, cell.is_alive)
 	update_from_buffer()
-	background.size = size + Vector2i(6, 6)
 	return _write_buffer
 
 
@@ -36,7 +33,7 @@ func clear() -> void:
 
 
 func randomise() -> void:
-	for cell: Cell in get_children().slice(1):
+	for cell: Cell in get_children():
 		cell.randomise()
 		_write_buffer.set_bitv(cell.location, cell.is_alive)
 	update_from_buffer()
