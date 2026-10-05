@@ -12,7 +12,6 @@ var write_buffer: BitMap
 
 func _ready() -> void:
 	State.edit_mode_changed.connect(_on_edit_mode_changed)
-	DisplayServer.window_set_min_size(Vector2i(1920, 1080))
 	write_buffer = grid.initialise(GridLayout, RandomiseGrid)
 	if not RandomiseGrid:
 		State.toggle_edit_mode()
