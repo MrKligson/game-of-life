@@ -133,29 +133,29 @@ shortcut_in_tooltip = false
 text = "RUN"
 script = ExtResource("10_s4oco")
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer" unique_id=643202066]
+[node name="MouseButtonLabels" type="GridContainer" parent="MarginContainer/VBoxContainer" unique_id=643202066]
 visible = false
 layout_mode = 2
 columns = 2
 script = ExtResource("11_s4oco")
 
-[node name="LMBLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1189396308]
+[node name="LMBLabel" type="Label" parent="MarginContainer/VBoxContainer/MouseButtonLabels" unique_id=1189396308]
 layout_mode = 2
 theme_type_variation = &"LabelCurrentMode"
 text = "Left mouse button: "
 
-[node name="LMBExplanation" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=268316610]
+[node name="LMBExplanation" type="Label" parent="MarginContainer/VBoxContainer/MouseButtonLabels" unique_id=268316610]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"LabelCurrentMode"
 text = "Draw life cells"
 
-[node name="RMBLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=2140774444]
+[node name="RMBLabel" type="Label" parent="MarginContainer/VBoxContainer/MouseButtonLabels" unique_id=2140774444]
 layout_mode = 2
 theme_type_variation = &"LabelCurrentMode"
 text = "Right mouse button: "
 
-[node name="RMBexplanation" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1183139474]
+[node name="RMBexplanation" type="Label" parent="MarginContainer/VBoxContainer/MouseButtonLabels" unique_id=1183139474]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"LabelCurrentMode"
