@@ -1,3 +1,4 @@
+class_name SideMenu
 extends PanelContainer
 
 
@@ -7,6 +8,7 @@ extends PanelContainer
 @onready var randomise_button: Button = %RandomiseButton
 @onready var fullscreen_button: Button = %FullscreenButton
 @onready var quit_button: Button = %QuitButton
+@onready var statistics: Statistics = %Statistics
 
 
 func _ready() -> void:
@@ -15,6 +17,10 @@ func _ready() -> void:
 	randomise_button.pressed.connect(grid.randomise)
 	fullscreen_button.pressed.connect(toggle_fullscreen)
 	quit_button.pressed.connect(quit)
+
+
+func initialise_statistics(grid_layout: Vector2i) -> Statistics:
+	return statistics.initialise(grid_layout)
 
 
 func quit() -> void:

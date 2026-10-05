@@ -7,10 +7,13 @@
 [ext_resource type="StyleBox" uid="uid://btd617pdtu783" path="res://ui/button_states/button_hoverd.tres" id="3_w0t27"]
 [ext_resource type="StyleBox" uid="uid://64atcowy1r5l" path="res://ui/button_states/button_normal.tres" id="4_vw87c"]
 [ext_resource type="StyleBox" uid="uid://cm6w0oi7gdx8n" path="res://ui/button_states/button_pressed.tres" id="5_wd0ol"]
-[ext_resource type="StyleBox" uid="uid://dr50ho5f6am80" path="res://ui/label_margins.tres" id="6_wd0ol"]
+[ext_resource type="FontFile" uid="uid://uee3ehmuq7f0" path="res://ui/font/JetBrainsMonoNerdFont-Regular.ttf" id="7_wuxdo"]
 [ext_resource type="Script" uid="uid://bwi8dlprkw73p" path="res://ui/side_menu.gd" id="9_wd0ol"]
 [ext_resource type="Script" uid="uid://c64vdkvtl5i83" path="res://ui/run_edit_button.gd" id="10_s4oco"]
 [ext_resource type="Script" uid="uid://dh5m8gfyl8wbb" path="res://ui/grid_container.gd" id="11_s4oco"]
+[ext_resource type="Script" uid="uid://dynbw030xtx5d" path="res://ui/statistics.gd" id="12_wuxdo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s4oco"]
 
 [sub_resource type="Theme" id="Theme_ofb81"]
 default_font = ExtResource("1_nb4k0")
@@ -35,7 +38,9 @@ Label/colors/font_color = Color(0.14509805, 0.47843137, 0.14509805, 1)
 Label/colors/font_outline_color = Color(0.36078432, 0.8, 0.36078432, 1)
 Label/colors/font_shadow_color = Color(0.011764706, 0.043137256, 0.015686275, 1)
 Label/constants/shadow_outline_size = 0
-Label/styles/normal = ExtResource("6_wd0ol")
+Label/styles/normal = SubResource("StyleBoxEmpty_s4oco")
+StatisticsLabel/base_type = &"Label"
+StatisticsLabel/fonts/font = ExtResource("7_wuxdo")
 
 [sub_resource type="LabelSettings" id="LabelSettings_upksi"]
 font = ExtResource("2_u7hwa")
@@ -133,29 +138,32 @@ shortcut_in_tooltip = false
 text = "RUN"
 script = ExtResource("10_s4oco")
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer" unique_id=643202066]
+[node name="MouseButtonLabels" type="GridContainer" parent="MarginContainer/VBoxContainer" unique_id=643202066]
 visible = false
 layout_mode = 2
+size_flags_horizontal = 4
 columns = 2
 script = ExtResource("11_s4oco")
 
-[node name="LMBLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1189396308]
+[node name="LMBLabel" type="Label" parent="MarginContainer/VBoxContainer/MouseButtonLabels" unique_id=1189396308]
 layout_mode = 2
 theme_type_variation = &"LabelCurrentMode"
 text = "Left mouse button: "
+horizontal_alignment = 2
 
-[node name="LMBExplanation" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=268316610]
+[node name="LMBExplanation" type="Label" parent="MarginContainer/VBoxContainer/MouseButtonLabels" unique_id=268316610]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"LabelCurrentMode"
 text = "Draw life cells"
 
-[node name="RMBLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=2140774444]
+[node name="RMBLabel" type="Label" parent="MarginContainer/VBoxContainer/MouseButtonLabels" unique_id=2140774444]
 layout_mode = 2
 theme_type_variation = &"LabelCurrentMode"
 text = "Right mouse button: "
+horizontal_alignment = 2
 
-[node name="RMBexplanation" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1183139474]
+[node name="RMBexplanation" type="Label" parent="MarginContainer/VBoxContainer/MouseButtonLabels" unique_id=1183139474]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"LabelCurrentMode"
@@ -180,8 +188,84 @@ shortcut_in_tooltip = false
 text = "RANDOMISE"
 
 [node name="Statistics" type="GridContainer" parent="MarginContainer/VBoxContainer" unique_id=1766104412]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 6
+columns = 2
+script = ExtResource("12_wuxdo")
+
+[node name="CellCountLabel" type="Label" parent="MarginContainer/VBoxContainer/Statistics" unique_id=360637868]
+layout_mode = 2
+text = "No. of cells:"
+horizontal_alignment = 2
+
+[node name="CellCount" type="Label" parent="MarginContainer/VBoxContainer/Statistics" unique_id=1258238256]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_type_variation = &"StatisticsLabel"
+horizontal_alignment = 2
+
+[node name="GenerationLabel" type="Label" parent="MarginContainer/VBoxContainer/Statistics" unique_id=240059939]
+layout_mode = 2
+text = "Generation:"
+horizontal_alignment = 2
+
+[node name="Generation" type="Label" parent="MarginContainer/VBoxContainer/Statistics" unique_id=1715545164]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_type_variation = &"StatisticsLabel"
+horizontal_alignment = 2
+
+[node name="LivingLabel" type="Label" parent="MarginContainer/VBoxContainer/Statistics" unique_id=743320701]
+layout_mode = 2
+text = "Living:"
+horizontal_alignment = 2
+
+[node name="Living" type="Label" parent="MarginContainer/VBoxContainer/Statistics" unique_id=435085340]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_type_variation = &"StatisticsLabel"
+horizontal_alignment = 2
+
+[node name="SurvivedLabel" type="Label" parent="MarginContainer/VBoxContainer/Statistics" unique_id=177019838]
+layout_mode = 2
+text = "Survived:"
+horizontal_alignment = 2
+
+[node name="Survived" type="Label" parent="MarginContainer/VBoxContainer/Statistics" unique_id=1043873835]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_type_variation = &"StatisticsLabel"
+horizontal_alignment = 2
+
+[node name="BornLabel" type="Label" parent="MarginContainer/VBoxContainer/Statistics" unique_id=1762251216]
+layout_mode = 2
+text = "Born:"
+horizontal_alignment = 2
+
+[node name="Born" type="Label" parent="MarginContainer/VBoxContainer/Statistics" unique_id=428653723]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_type_variation = &"StatisticsLabel"
+horizontal_alignment = 2
+
+[node name="DiedLabel" type="Label" parent="MarginContainer/VBoxContainer/Statistics" unique_id=92769435]
+layout_mode = 2
+text = "Died:"
+horizontal_alignment = 2
+
+[node name="Died" type="Label" parent="MarginContainer/VBoxContainer/Statistics" unique_id=566228134]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_type_variation = &"StatisticsLabel"
+horizontal_alignment = 2
 
 [node name="FullscreenButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=2086070930]
 unique_name_in_owner = true

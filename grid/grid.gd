@@ -7,13 +7,16 @@ var size: Vector2i:
 	get:
 		return _layout * (get_child(0) as Cell).size
 
+var _statistics: Statistics
+
 var _write_buffer := BitMap.new()
 var _layout: Vector2i
 
 
-func initialise(layout: Vector2i, random: bool = true) -> BitMap:
+func initialise(layout: Vector2i, statistics: Statistics, random: bool = true) -> BitMap:
 	_layout = layout
 	_write_buffer.create(layout)
+	_statistics = statistics
 	for y: int in layout.y:
 		for x: int in layout.x:
 			var cell: Cell = CellScene.instantiate()
@@ -26,6 +29,7 @@ func initialise(layout: Vector2i, random: bool = true) -> BitMap:
 
 
 func clear() -> void:
+	_statistics.reset()
 	_write_buffer.create(_layout)
 	update_from_buffer()
 	if not State.edit_mode:
@@ -33,10 +37,14 @@ func clear() -> void:
 
 
 func randomise() -> void:
+	_statistics.reset()
 	for cell: Cell in get_children():
 		cell.randomise()
 		_write_buffer.set_bitv(cell.location, cell.is_alive)
+		_statistics.born += 1 if cell.is_alive else 0
 	update_from_buffer()
+	_statistics.update()
+
 
 
 func update_from_buffer() -> void:
