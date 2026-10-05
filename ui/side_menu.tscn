@@ -81,7 +81,7 @@ layout_mode = 2
 size_flags_vertical = 0
 tooltip_text = "Switches to edit mode. [spacebar] or [e]"
 focus_mode = 0
-shortcut = ExtResource("8_w0t27")
+shortcut = SubResource("Shortcut_fhspm")
 shortcut_in_tooltip = false
 text = "RUN"
 
@@ -90,6 +90,8 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
 focus_mode = 0
+shortcut = SubResource("Shortcut_l5myt")
+shortcut_in_tooltip = false
 text = "CLEAR"
 
 [node name="RandomiseButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=553060555]
@@ -97,6 +99,8 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
 focus_mode = 0
+shortcut = SubResource("Shortcut_2jjxr")
+shortcut_in_tooltip = false
 text = "RANDOMISE"
 
 [node name="Statistics" type="GridContainer" parent="MarginContainer/VBoxContainer" unique_id=1766104412]
@@ -107,6 +111,8 @@ size_flags_vertical = 3
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
+shortcut = SubResource("Shortcut_2tdvt")
+shortcut_in_tooltip = false
 text = "FULLSCREEN"
 
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=152541140]
@@ -114,4 +120,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 focus_mode = 0
+shortcut = SubResource("Shortcut_0yje3")
+shortcut_in_tooltip = false
 text = "QUIT"
